@@ -1,3 +1,28 @@
+// Cursor
+
+let innerCursor = document.querySelector(".inner-cursor");
+let outerCursor = document.querySelector(".outer-cursor");
+
+document.addEventListener("mousemove", moveCursor);
+
+function moveCursor(e){
+    let x = e.clientX;
+    let y = e.clientY;
+    innerCursor.style.left = `${x}px`;
+    innerCursor.style.top = `${y}px`;
+    outerCursor.style.left = `${x}px`;
+    outerCursor.style.top = `${y}px`;
+}
+let links = Array.from(document.querySelectorAll("a"));
+links.forEach(link => {
+    link.addEventListener("mouseover", () => {
+        innerCursor.classList.add("grow");
+    });
+    link.addEventListener("mouseleave", () => {
+        innerCursor.classList.remove("grow");
+    });
+});
+
 // Navbar
 function toggleContainerClass() {
     if (window.innerWidth < 992) {
@@ -9,8 +34,6 @@ function toggleContainerClass() {
   
   window.addEventListener('resize', toggleContainerClass);
   window.addEventListener('load', toggleContainerClass);
-  
-  
   
       // Initiate the wowjs
       new WOW().init();
